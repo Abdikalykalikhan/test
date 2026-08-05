@@ -2,361 +2,53 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-
-    <!-- Чтобы сайт нормально выглядел на телефоне -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Алиханчик — инженер автоматизации</title>
-
-    <style>
-        /* Настройки всей страницы */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #1f2937;
-            line-height: 1.6;
-        }
-
-        /* Верхнее меню */
-        header {
-            background: #111827;
-            color: white;
-            padding: 18px 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-        }
-
-        nav a:hover {
-            color: #60a5fa;
-        }
-
-        /* Главный экран */
-        .hero {
-            min-height: 85vh;
-            padding: 80px 10%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            background: linear-gradient(135deg, #dbeafe, #ffffff);
-        }
-
-        .hero-text {
-            max-width: 650px;
-        }
-
-        .hero h1 {
-            font-size: 52px;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 span {
-            color: #2563eb;
-        }
-
-        .hero h2 {
-            font-size: 25px;
-            margin-bottom: 20px;
-            color: #4b5563;
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-
-        .button {
-            display: inline-block;
-            background: #2563eb;
-            color: white;
-            padding: 13px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .button:hover {
-            background: #1d4ed8;
-        }
-
-        /* Круг вместо фотографии */
-        .photo {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            background: #2563eb;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 90px;
-            font-weight: bold;
-            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.3);
-        }
-
-        /* Общие настройки разделов */
-        section {
-            padding: 80px 10%;
-        }
-
-        section h2 {
-            font-size: 36px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .about {
-            background: white;
-        }
-
-        .about p {
-            max-width: 850px;
-            margin: auto;
-            text-align: center;
-            font-size: 18px;
-        }
-
-        /* Навыки */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .card h3 {
-            color: #2563eb;
-            margin-bottom: 10px;
-        }
-
-        /* Проекты */
-        .projects {
-            background: white;
-        }
-
-        .projects-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        /* Контакты */
-        .contact {
-            text-align: center;
-        }
-
-        .contact p {
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-
-        footer {
-            background: #111827;
-            color: white;
-            text-align: center;
-            padding: 25px;
-        }
-
-        /* Настройки для телефона */
-        @media (max-width: 800px) {
-            header {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            nav a {
-                margin: 0 7px;
-            }
-
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 38px;
-            }
-
-            .photo {
-                width: 220px;
-                height: 220px;
-            }
-
-            .skills-container,
-            .projects-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>Мини-игры</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <!-- Верхнее меню -->
-    <header>
-        <div class="logo">Моё портфолио</div>
-
-        <nav>
-            <a href="#about">Обо мне</a>
-            <a href="#skills">Навыки</a>
-            <a href="#projects">Проекты</a>
-            <a href="#contact">Контакты</a>
-        </nav>
+    <header class="topbar">
+        <a class="logo" href="index.html">🎮 Mini Games</a>
+        <span>Играй прямо в браузере</span>
     </header>
 
-    <!-- Главный экран -->
-    <main>
+    <main class="container">
         <section class="hero">
-            <div class="hero-text">
-                <h1>Привет! Я <span>Алихан</span></h1>
-
-                <h2>Инженер автоматизации и начинающий ПИДАгог</h2>
-
-                <p>
-                    Я изучаю промышленную автоматизацию, программирование
-                    контроллеров, SCADA-системы и создание мира.
-                </p>
-
-                <a class="button" href="#about">Узнать обо мне</a>
-            </div>
-
-            <!-- Позже здесь можно поставить фотографию -->
-            <div class="photo">Ж</div>
+            <p class="eyebrow">МОЙ ИГРОВОЙ САЙТ</p>
+            <h1>Выбери игру</h1>
+            <p>Нажми на карточку — откроется отдельная страница с игрой.</p>
         </section>
 
-        <!-- Обо мне -->
-        <section class="about" id="about">
-            <h2>Обо мне</h2>
+        <section class="game-grid">
+            <a class="game-card" href="games/clicker.html">
+                <div class="game-icon">⚡</div>
+                <h2>Быстрый кликер</h2>
+                <p>Набери как можно больше кликов за 10 секунд.</p>
+                <span>Играть →</span>
+            </a>
 
-            <p>
-                Меня зовут АЛихан. Я занимаюсь промышленной автоматизацией
-                и изучаю современные информационные технологии.
-                Работаю с контроллерами Siemens и Schneider Electric,
-                SCADA-системами и промышленными сетями.
-                Сейчас также изучаю финансувую неграматность.
-            </p>
-        </section>
+            <a class="game-card" href="games/guess.html">
+                <div class="game-icon">🔢</div>
+                <h2>Угадай число</h2>
+                <p>Компьютер загадал число от 1 до 100.</p>
+                <span>Играть →</span>
+            </a>
 
-        <!-- Навыки -->
-        <section id="skills">
-            <h2>Мои навыки</h2>
-
-            <div class="skills-container">
-                <div class="card">
-                    <h3>PLC</h3>
-                    <p>
-                        Siemens S7-1200, Schneider Modicon M241,
-                        M340 и M580.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <h3>SCADA и DCS</h3>
-                    <p>
-                        Siemens WinCC, Schneider Control Expert,
-                        основы Yokogawa и Honeywell Experion.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <h3>Программирование</h3>
-                    <p>
-                        Изучаю HTML, CSS, JavaScript, Python
-                        и создание веб-приложений.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Проекты -->
-        <section class="projects" id="projects">
-            <h2>Мои проекты</h2>
-
-            <div class="projects-container">
-                <div class="card">
-                    <h3>Автоматическое перекачивание жидкости</h3>
-
-                    <p>
-                        Система управления двумя резервуарами,
-                        насосами, клапанами и аналоговыми датчиками уровня.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <h3>SCADA-интерфейс</h3>
-
-                    <p>
-                        Разработка экранов управления, аварийной сигнализации,
-                        отображения состояния оборудования и архивов.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Контакты -->
-        <section class="contact" id="contact">
-            <h2>Контакты</h2>
-
-            <p>Email: your-email@example.com</p>
-            <p>Город: Алматы, Казахстан</p>
-
-            <button class="button" onclick="showMessage()">
-                Связаться со мной 8 747 3939 665
-            </button>
+            <a class="game-card" href="games/rps.html">
+                <div class="game-icon">✊</div>
+                <h2>Камень, ножницы, бумага</h2>
+                <p>Сыграй против компьютера и набери больше побед.</p>
+                <span>Играть →</span>
+            </a>
         </section>
     </main>
 
     <footer>
-        <p>© <span id="year"></span> Жибек. Все права защищены.</p>
+        <p>© <span id="year"></span> Мой игровой сайт</p>
     </footer>
 
     <script>
-        // Автоматически показывает текущий год
-        document.getElementById("year").textContent =
-            new Date().getFullYear();
-
-        // Срабатывает при нажатии кнопки
-        function showMessage() {
-            alert("Спасибо за интерес к моему сайту!");
-
-
-
-
-            
-        }
+        document.getElementById("year").textContent = new Date().getFullYear();
     </script>
-
 </body>
 </html>
