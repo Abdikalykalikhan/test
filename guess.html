@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Угадай число</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="logo" href="../index.html">🎮 Mini Games</a>
+        <span>Угадай число</span>
+    </header>
+
+    <main class="container game-page">
+        <section class="game-box">
+            <h1>🔢 Угадай число</h1>
+            <p>Я загадал число от 1 до 100. Попробуй угадать.</p>
+
+            <div class="input-row">
+                <input id="guessInput" type="number" min="1" max="100" placeholder="Введите число">
+                <button class="primary-btn" id="checkButton">Проверить</button>
+            </div>
+
+            <div class="status" id="message">Начинай!</div>
+            <p>Количество попыток: <strong id="attempts">0</strong></p>
+
+            <button class="primary-btn" id="restartButton">Новая игра</button>
+            <br>
+            <a class="back-link" href="../index.html">← Вернуться к играм</a>
+        </section>
+    </main>
+
+    <script>
+        const input = document.getElementById("guessInput");
+        const checkButton = document.getElementById("checkButton");
+        const restartButton = document.getElementById("restartButton");
+        const message = document.getElementById("message");
+        const attemptsElement = document.getElementById("attempts");
+
+        let secretNumber = randomNumber();
+        let attempts = 0;
+
+        function randomNumber() {
+            return Math.floor(Math.random() * 100) + 1;
+        }
+
+        function checkGuess() {
+            const value = Number(input.value);
+
+            if (!Number.isInteger(value) || value < 1 || value > 100) {
+                message.textContent = "Введи целое число от 1 до 100.";
+                return;
+            }
+
+            attempts++;
+            attemptsElement.textContent = attempts;
+
+            if (value === secretNumber) {
+                message.textContent = `Правильно! Число ${secretNumber}.`;
+                input.disabled = true;
+                checkButton.disabled = true;
+            } else if (value < secretNumber) {
+                message.textContent = "Загаданное число больше.";
+            } else {
+                message.textContent = "Загаданное число меньше.";
+            }
+
+            input.value = "";
+            input.focus();
+        }
+
+        function restartGame() {
+            secretNumber = randomNumber();
+            attempts = 0;
+            attemptsElement.textContent = attempts;
+            message.textContent = "Новое число загадано!";
+            input.disabled = false;
+            checkButton.disabled = false;
+            input.value = "";
+            input.focus();
+        }
+
+        checkButton.addEventListener("click", checkGuess);
+        restartButton.addEventListener("click", restartGame);
+        input.addEventListener("keydown", event => {
+            if (event.key === "Enter") checkGuess();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Камень, ножницы, бумага</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="logo" href="../index.html">🎮 Mini Games</a>
+        <span>Камень, ножницы, бумага</span>
+    </header>
+
+    <main class="container game-page">
+        <section class="game-box">
+            <h1>✊ ✌️ ✋</h1>
+            <p>Выбери свой ход.</p>
+
+            <div class="choices">
+                <button class="choice-btn" data-choice="rock">✊<small>Камень</small></button>
+                <button class="choice-btn" data-choice="scissors">✌️<small>Ножницы</small></button>
+                <button class="choice-btn" data-choice="paper">✋<small>Бумага</small></button>
+            </div>
+
+            <div class="status" id="result">Сделай выбор</div>
+            <p id="moves"></p>
+
+            <div class="scoreboard">
+                <div>Ты<strong id="playerScore">0</strong></div>
+                <div>Компьютер<strong id="computerScore">0</strong></div>
+            </div>
+
+            <button class="primary-btn" id="resetButton">Сбросить счёт</button>
+            <br>
+            <a class="back-link" href="../index.html">← Вернуться к играм</a>
+        </section>
+    </main>
+
+    <script>
+        const labels = {
+            rock: "Камень ✊",
+            scissors: "Ножницы ✌️",
+            paper: "Бумага ✋"
+        };
+
+        let playerScore = 0;
+        let computerScore = 0;
+
+        const result = document.getElementById("result");
+        const moves = document.getElementById("moves");
+        const playerScoreElement = document.getElementById("playerScore");
+        const computerScoreElement = document.getElementById("computerScore");
+        const choices = ["rock", "scissors", "paper"];
+
+        function play(playerChoice) {
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+            moves.textContent = `Ты: ${labels[playerChoice]} | Компьютер: ${labels[computerChoice]}`;
+
+            if (playerChoice === computerChoice) {
+                result.textContent = "Ничья!";
+                return;
+            }
+
+            const playerWins =
+                (playerChoice === "rock" && computerChoice === "scissors") ||
+                (playerChoice === "scissors" && computerChoice === "paper") ||
+                (playerChoice === "paper" && computerChoice === "rock");
+
+            if (playerWins) {
+                playerScore++;
+                result.textContent = "Ты победил!";
+                playerScoreElement.textContent = playerScore;
+            } else {
+                computerScore++;
+                result.textContent = "Компьютер победил.";
+                computerScoreElement.textContent = computerScore;
+            }
+        }
+
+        document.querySelectorAll(".choice-btn").forEach(button => {
+            button.addEventListener("click", () => play(button.dataset.choice));
+        });
+
+        document.getElementById("resetButton").addEventListener("click", () => {
+            playerScore = 0;
+            computerScore = 0;
+            playerScoreElement.textContent = 0;
+            computerScoreElement.textContent = 0;
+            result.textContent = "Счёт сброшен";
+            moves.textContent = "";
+        });
+    </script>
+</body>
+</html>

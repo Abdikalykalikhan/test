@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Быстрый кликер</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="logo" href="../index.html">🎮 Mini Games</a>
+        <span>Быстрый кликер</span>
+    </header>
+
+    <main class="container game-page">
+        <section class="game-box">
+            <h1>⚡ Быстрый кликер</h1>
+            <p>Нажми «Начать», затем кликай по большой кнопке. У тебя 10 секунд.</p>
+
+            <div class="scoreboard">
+                <div>Время<strong id="time">10</strong></div>
+                <div>Счёт<strong id="score">0</strong></div>
+            </div>
+
+            <button class="primary-btn click-btn" id="clickButton" disabled>КЛИК!</button>
+            <button class="primary-btn" id="startButton">Начать игру</button>
+
+            <div class="status" id="status">Готов?</div>
+            <a class="back-link" href="../index.html">← Вернуться к играм</a>
+        </section>
+    </main>
+
+    <script>
+        const startButton = document.getElementById("startButton");
+        const clickButton = document.getElementById("clickButton");
+        const scoreElement = document.getElementById("score");
+        const timeElement = document.getElementById("time");
+        const statusElement = document.getElementById("status");
+
+        let score = 0;
+        let timeLeft = 10;
+        let timerId = null;
+
+        startButton.addEventListener("click", () => {
+            score = 0;
+            timeLeft = 10;
+            scoreElement.textContent = score;
+            timeElement.textContent = timeLeft;
+            statusElement.textContent = "Кликай быстрее!";
+            startButton.disabled = true;
+            clickButton.disabled = false;
+
+            timerId = setInterval(() => {
+                timeLeft--;
+                timeElement.textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerId);
+                    clickButton.disabled = true;
+                    startButton.disabled = false;
+                    statusElement.textContent = `Игра окончена! Твой результат: ${score}`;
+                }
+            }, 1000);
+        });
+
+        clickButton.addEventListener("click", () => {
+            score++;
+            scoreElement.textContent = score;
+        });
+    </script>
+</body>
+</html>
